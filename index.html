@@ -151,7 +151,63 @@ img[embeddedService-chatHeader_chatHeader] {
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'pt_BR'; // For example, enter 'en' or 'en-US'
-
+			embeddedservice_bootstrap.settings.displayHelpButton = true;
+			embeddedservice_bootstrap.settings.loadingText = 'Carregando';
+			embeddedservice_bootstrap.settings.defaultMinimizedText = 'Iniciar bate-papo';
+			embeddedservice_bootstrap.settings.disabledMinimizedText = 'Agente off-line';
+			embeddedservice_bootstrap.settings.extraPrechatFormDetails = [{ "label": "FirstName",
+                                                                  "value": 'Cardoso Jesus e Filhos',
+                                                                  "displayToAgent": false
+                                                              },{ "label": "Origin",
+                                                                  "value": "Chat",
+                                                                  "displayToAgent": false
+                                                              },{ "label": "Id",
+                                                                  "value": '0017i00001KvXDOAA3',
+                                                                  "displayToAgent": false
+                                                              },{ "label": "RecordTypeId",
+                                                                  "value": '0121Y000001J66KQAS',
+                                                                  "displayToAgent": false
+                                                              }];
+			embeddedservice_bootstrap.settings.extraPrechatInfo = [{ "entityName": "Contact",
+                                                          "showOnCreate": false,
+                                                          "saveToTranscript": "",
+                                                          "entityFieldMaps": [{
+                                                              "isExactMatch": false, 
+                                                              "fieldName": "FirstName",
+                                                              "doCreate": false, 
+                                                              "doFind": false, 
+                                                              "label": "FirstName"
+                                                          }]
+                                                      },{ "showOnCreate": true,
+                                                          "entityName": "Account",
+                                                          "saveToTranscript": "AccountId",
+                                                          "linkToEntityName": "Case",
+                                                          "linkToEntityField": "AccountId",
+                                                          "entityFieldMaps": [{
+                                                                  "doCreate": false,
+                                                                  "doFind": true,
+                                                                  "fieldName": "Id",
+                                                                  "isExactMatch": true,
+                                                                  "label": "Id"
+                                                              }]
+                                                      },{ "entityName": "Case",
+                                                          "showOnCreate": true,
+                                                          "saveToTranscript": "CaseId",
+                                                          "entityFieldMaps": [{
+                                                              "isExactMatch": false,
+                                                              "fieldName": "RecordTypeId",
+                                                              "doCreate": true,
+                                                              "doFind": false,
+                                                              "label": "RecordTypeId"
+                                                              },{
+                                                              "isExactMatch": false,
+                                                              "fieldName": "Origin",
+                                                              "doCreate": true,
+                                                              "doFind": false,
+                                                              "label": "Origin"
+                                                              }]
+                                                        }];
+				
 			embeddedservice_bootstrap.init(
 				'00D7i000000FsYm',
 				'Canais_Digitais_React_Native_App',
